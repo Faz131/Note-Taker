@@ -22,8 +22,6 @@ app.get('/notes', (req, res) =>
 );
 
 
-
-
 const notesRouter = require('./routes/noteroute')
 
 app.use('/notes', notesRouter)
