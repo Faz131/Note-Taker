@@ -1,14 +1,19 @@
+const exp = require('constants');
 const express = require('express');
 const path = require('path');
-const noteData = require('./db/db.json');
 const { clog } = require('./middleware/clog');
-const fs = require('fs');
+const api = require('./routes/index');
 
-const PORT = 3001;
+const PORT = process.env.port || 3001;
 
 
 const app = express();
+
 app.use(clog);
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use('/api', api);
 
 app.use(express.static('public'));
 
@@ -25,6 +30,9 @@ app.get('/notes', (req, res) =>
 const notesRouter = require('./routes/noteroute')
 
 app.use('/notes', notesRouter)
+
+app.post('/notes', (req, res) => res.sendFile(path.join(__dirname, '/db/notes.json'))
+);
 
 app.listen(PORT, () =>
     console.log(`App listening at http://localhost:${PORT} 🚀`)
