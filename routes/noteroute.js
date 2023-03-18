@@ -16,7 +16,9 @@ notes.get('/', (req, res) => {
         .then((data) => res.json(JSON.parse(data)));
 });
 
-notes.get('/:note_id', (req, res) => {
+
+
+notes.get('/notes/:note_id', (req, res) => {
     const noteId = req.params.note_id;
     readFromFile('./db/notes.json')
         .then((data) => JSON.parse(data))
@@ -26,29 +28,31 @@ notes.get('/:note_id', (req, res) => {
                 ? res.json(result)
                 : res.json('No tip with that ID');
         });
+
 });
+
+// writeToFile('./db/notes.json', result);
 
 
 
 // Save that array to the filesystem
 // const result = json.filter((notes) => notes);
-notes.get('/api/notes', (req, res) => {
-    readFromFile('./db/notes.json').then((data) => res.json(JSON.parse(data)));
-});
+// notes.get('/db/api/notes', (req, res) => {
+//     readFromFile('./db/notes.json').then((data) => res.json(JSON.parse(data)));
+// });
 
 
 
-// POST Route for a new UX/UI tip
+// POST Route for a new note
 notes.post('/', (req, res) => {
     console.log(req.body);
 
-    const { title, text, note_id } = req.body;
+    const { title, text, } = req.body;
 
     if (req.body) {
         const newNote = {
             title,
             text,
-            note_id
         };
 
         readAndAppend(newNote, './db/notes.json');
