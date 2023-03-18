@@ -32,7 +32,7 @@ notes.get('/:note_id', (req, res) => {
 
 // Save that array to the filesystem
 // const result = json.filter((notes) => notes);
-notes.get('/', (req, res) => {
+notes.get('/api/notes', (req, res) => {
     readFromFile('./db/notes.json').then((data) => res.json(JSON.parse(data)));
 });
 
