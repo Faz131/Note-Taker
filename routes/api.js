@@ -6,15 +6,11 @@ const {
     writeToFile,
 } = require('../helpers/fsUtils');
 
-// express.get('/', (req, res) => {
-//     readFromFile('./db/notes.json')
-//         .then((data) => res.json(JSON.parse(data)));
-// });
 
 
 
 notes.get('/', (req, res) => {
-    // const noteText = req.params.text;
+
     readFromFile('./db/notes.json')
         .then((data) => res.json(JSON.parse(data)));
 });

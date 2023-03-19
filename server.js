@@ -1,3 +1,5 @@
+
+//Variables that will handle routes, middleware, filesystem
 const exp = require('constants');
 const express = require('express');
 const path = require('path');
@@ -5,6 +7,7 @@ const { clog } = require('./middleware/clog');
 const api = require('./routes/index');
 const fs = require('fs');
 
+//checking for an open port connection
 const PORT = process.env.PORT || 3001;
 
 
@@ -18,18 +21,19 @@ app.use('/', api);
 
 app.use(express.static('public'));
 
-
+//Get path for the main HTML page
 app.get('/', (req, res) =>
     res.sendFile(path.join(__dirname, '/public/index.html'))
 );
 
+//Get path for the Notes HTML page
 app.get('/notes', (req, res) =>
     res.sendFile(path.join(__dirname, '/public/notes.html'))
 );
 
 
 
-// GET request for reviews
+// GET request for Notes
 app.get('/notes', (req, res) => {
     fs.readFile('./db/notes.json', 'utf8', (err, data) => {
         if (err) {
@@ -78,8 +82,6 @@ const notesRouter = require('./routes/noteroute')
 
 app.use('/notes', notesRouter)
 
-// app.post('/api/notes', (req, res) => res.sendFile(path.join(__dirname, '/db/notes.json'))
-// );
 
 
 

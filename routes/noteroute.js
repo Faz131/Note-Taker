@@ -12,7 +12,6 @@ const {
 
 // GET Route for retrieving all the notes
 notes.get('/api/notes', (req, res) => {
-    // const noteText = req.params.text;
     readFromFile('./db/notes.json')
         .then((data) => res.json(JSON.parse(data)));
 });
