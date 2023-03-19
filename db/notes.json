@@ -4,18 +4,6 @@
         "text": "Test text",
         "note_id": "ID"
     },
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
     {
         "title": "Test Title",
         "text": "Test text"
@@ -41,8 +29,12 @@
         "title": "Test Title",
         "text": "Test text"
     },
-    {},
-    {},
-    {},
-    {}
+    {
+        "title": "teset",
+        "text": "agsgsagsdgsdg"
+    },
+    {
+        "title": "I like Turtles",
+        "text": "turtle time"
+    }
 ]

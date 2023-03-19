@@ -14,7 +14,7 @@ app.use(clog);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use('/api', api);
+app.use('/', api);
 
 app.use(express.static('public'));
 
@@ -26,6 +26,8 @@ app.get('/', (req, res) =>
 app.get('/notes', (req, res) =>
     res.sendFile(path.join(__dirname, '/public/notes.html'))
 );
+
+
 
 // GET request for reviews
 app.get('/notes', (req, res) => {
@@ -39,9 +41,10 @@ app.get('/notes', (req, res) => {
     });
 });
 
-app.post('/db/notes', (req, res) => {
+app.post('/', (req, res) => {
     // Log that a POST request was received
     console.info(`${req.method} request received to add a notes`);
+    const { title, text } = req.body
 })
 
 fs.readFile('./db/notes.json', 'utf8', (err, data) => {
